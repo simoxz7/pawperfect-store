@@ -19,10 +19,10 @@ const ProductDetailPage = () => {
     price: 49.99,
     originalPrice: 69.99,
     images: [
-      "/api/placeholder/500/500",
-      "/api/placeholder/500/500",
-      "/api/placeholder/500/500",
-      "/api/placeholder/500/500"
+      "/src/assets/premium_donut_pet_bed.webp",
+      "/src/assets/premium_donut_pet_bed.webp",
+      "/src/assets/premium_donut_pet_bed.webp",
+      "/src/assets/premium_donut_pet_bed.webp"
     ],
     rating: 4.8,
     reviews: 124,
@@ -86,21 +86,21 @@ const ProductDetailPage = () => {
       id: 2,
       name: "Interactive Puzzle Toy",
       price: 24.99,
-      image: "/api/placeholder/200/200",
+      image: "/src/assets/interactive_puzzle_toy.webp",
       rating: 4.6
     },
     {
       id: 4,
       name: "No-Pull Training Harness",
       price: 29.99,
-      image: "/api/placeholder/200/200",
+      image: "/src/assets/no_pull_training_harness.webp",
       rating: 4.7
     },
     {
       id: 3,
       name: "Orthopedic Memory Foam Bed",
       price: 79.99,
-      image: "/api/placeholder/200/200",
+      image: "/src/assets/orthopedic_memory_foam_bed.webp",
       rating: 4.9
     }
   ]
@@ -372,4 +372,5 @@ const ProductDetailPage = () => {
 }
 
 export default ProductDetailPage
+
 
