@@ -1,10 +1,15 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Star, Heart, Truck, Shield, ArrowLeft, Plus, Minus } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
+import premiumDonutPetBed from "../assets/premium_donut_pet_bed.webp"
+import interactivePuzzleToy from "../assets/interactive_puzzle_toy.webp"
+import orthopedicMemoryFoamBed from "../assets/orthopedic_memory_foam_bed.webp"
+import noPullTrainingHarness from "../assets/no_pull_training_harness.webp"
 
 const ProductDetailPage = () => {
   const { id } = useParams()
@@ -19,10 +24,10 @@ const ProductDetailPage = () => {
     price: 49.99,
     originalPrice: 69.99,
     images: [
-      "/src/assets/premium_donut_pet_bed.webp",
-      "/src/assets/premium_donut_pet_bed.webp",
-      "/src/assets/premium_donut_pet_bed.webp",
-      "/src/assets/premium_donut_pet_bed.webp"
+      premiumDonutPetBed,
+      premiumDonutPetBed,
+      premiumDonutPetBed,
+      premiumDonutPetBed
     ],
     rating: 4.8,
     reviews: 124,
@@ -61,7 +66,7 @@ const ProductDetailPage = () => {
       rating: 5,
       date: "2 weeks ago",
       title: "My dog loves it!",
-      content: "This bed is amazing! My golden retriever absolutely loves curling up in it. The quality is excellent and it's held up well to daily use."
+      content: "This bed is amazing! My golden retriever absolutely loves curling up in it. The quality is excellent and it\'s held up well to daily use."
     },
     {
       id: 2,
@@ -86,21 +91,21 @@ const ProductDetailPage = () => {
       id: 2,
       name: "Interactive Puzzle Toy",
       price: 24.99,
-      image: "/src/assets/interactive_puzzle_toy.webp",
+      image: interactivePuzzleToy,
       rating: 4.6
     },
     {
       id: 4,
       name: "No-Pull Training Harness",
       price: 29.99,
-      image: "/src/assets/no_pull_training_harness.webp",
+      image: noPullTrainingHarness,
       rating: 4.7
     },
     {
       id: 3,
       name: "Orthopedic Memory Foam Bed",
       price: 79.99,
-      image: "/src/assets/orthopedic_memory_foam_bed.webp",
+      image: orthopedicMemoryFoamBed,
       rating: 4.9
     }
   ]

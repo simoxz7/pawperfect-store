@@ -1,18 +1,26 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams, Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Star, Heart, Filter } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
+import premiumDonutPetBed from "../assets/premium_donut_pet_bed.webp"
+import interactivePuzzleToy from "../assets/interactive_puzzle_toy.webp"
+import orthopedicMemoryFoamBed from "../assets/orthopedic_memory_foam_bed.webp"
+import noPullTrainingHarness from "../assets/no_pull_training_harness.webp"
+import automaticCatFeeder from "../assets/automatic_cat_feeder.webp"
+import catnipInfusedScratchingPost from "../assets/catnip_infused_scratching_post.webp"
+import birdCageDeluxe from "../assets/bird_cage_deluxe.webp"
+import aquariumLedLightSystem from "../assets/aquarium_led_light_system.webp"
 
 const ProductsPage = () => {
   const [searchParams] = useSearchParams()
   const { addItem } = useCart()
   const [filteredProducts, setFilteredProducts] = useState([])
-  const [sortBy, setSortBy] = useState('featured')
+  const [sortBy, setSortBy] = useState("featured")
   const [priceRange, setPriceRange] = useState([0, 200])
   const [selectedCategories, setSelectedCategories] = useState([])
 
@@ -23,7 +31,7 @@ const ProductsPage = () => {
       name: "Premium Donut Pet Bed",
       price: 49.99,
       originalPrice: 69.99,
-      image: "/src/assets/premium_donut_pet_bed.webp",
+      image: premiumDonutPetBed,
       rating: 4.8,
       reviews: 124,
       category: "beds",
@@ -36,7 +44,7 @@ const ProductsPage = () => {
       name: "Interactive Puzzle Toy",
       price: 24.99,
       originalPrice: 29.99,
-      image: "/src/assets/interactive_puzzle_toy.webp",
+      image: interactivePuzzleToy,
       rating: 4.6,
       reviews: 89,
       category: "toys",
@@ -49,7 +57,7 @@ const ProductsPage = () => {
       name: "Orthopedic Memory Foam Bed",
       price: 79.99,
       originalPrice: 99.99,
-      image: "/src/assets/orthopedic_memory_foam_bed.webp",
+      image: orthopedicMemoryFoamBed,
       rating: 4.9,
       reviews: 156,
       category: "beds",
@@ -62,7 +70,7 @@ const ProductsPage = () => {
       name: "No-Pull Training Harness",
       price: 29.99,
       originalPrice: 34.99,
-      image: "/src/assets/no_pull_training_harness.webp",
+      image: noPullTrainingHarness,
       rating: 4.7,
       reviews: 203,
       category: "accessories",
@@ -75,7 +83,7 @@ const ProductsPage = () => {
       name: "Automatic Cat Feeder",
       price: 89.99,
       originalPrice: 109.99,
-      image: "/src/assets/automatic_cat_feeder.webp",
+      image: automaticCatFeeder,
       rating: 4.5,
       reviews: 78,
       category: "feeding",
@@ -88,7 +96,7 @@ const ProductsPage = () => {
       name: "Catnip Infused Scratching Post",
       price: 19.99,
       originalPrice: 24.99,
-      image: "/src/assets/catnip_infused_scratching_post.webp",
+      image: catnipInfusedScratchingPost,
       rating: 4.4,
       reviews: 92,
       category: "toys",
@@ -101,7 +109,7 @@ const ProductsPage = () => {
       name: "Bird Cage Deluxe",
       price: 129.99,
       originalPrice: 149.99,
-      image: "/src/assets/bird_cage_deluxe.webp",
+      image: birdCageDeluxe,
       rating: 4.8,
       reviews: 45,
       category: "housing",
@@ -114,7 +122,7 @@ const ProductsPage = () => {
       name: "Aquarium LED Light System",
       price: 59.99,
       originalPrice: 79.99,
-      image: "/src/assets/aquarium_led_light_system.webp",
+      image: aquariumLedLightSystem,
       rating: 4.6,
       reviews: 67,
       category: "accessories",
