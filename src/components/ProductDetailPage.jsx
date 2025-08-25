@@ -6,10 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Star, Heart, Truck, Shield, ArrowLeft, Plus, Minus } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
-import premiumDonutPetBed from "../assets/premium_donut_pet_bed.webp"
-import interactivePuzzleToy from "../assets/interactive_puzzle_toy.webp"
-import orthopedicMemoryFoamBed from "../assets/orthopedic_memory_foam_bed.webp"
-import noPullTrainingHarness from "../assets/no_pull_training_harness.webp"
+import { getProductById, allProducts } from "../data/products"
 
 const ProductDetailPage = () => {
   const { id } = useParams()
@@ -17,46 +14,22 @@ const ProductDetailPage = () => {
   const [quantity, setQuantity] = useState(1)
   const [selectedImage, setSelectedImage] = useState(0)
 
-  // Sample product data - in a real app, this would be fetched based on the ID
-  const product = {
-    id: parseInt(id),
-    name: "Premium Donut Pet Bed",
-    price: 49.99,
-    originalPrice: 69.99,
-    images: [
-      premiumDonutPetBed,
-      premiumDonutPetBed,
-      premiumDonutPetBed,
-      premiumDonutPetBed
-    ],
-    rating: 4.8,
-    reviews: 124,
-    category: "beds",
-    petType: "dogs",
-    badge: "Best Seller",
-    inStock: true,
-    description: "Give your furry friend the ultimate comfort with our Premium Donut Pet Bed. This ultra-soft, plush bed features raised edges that provide a sense of security and warmth, perfect for pets who love to curl up while they sleep.",
-    features: [
-      "Ultra-soft plush fabric for maximum comfort",
-      "Raised edges provide security and warmth",
-      "Machine washable for easy maintenance",
-      "Non-slip bottom keeps bed in place",
-      "Available in multiple sizes and colors",
-      "Hypoallergenic materials safe for sensitive pets"
-    ],
-    specifications: {
-      "Material": "Premium plush fabric with polyester fill",
-      "Dimensions": "24\" x 24\" x 6\"",
-      "Weight": "2.5 lbs",
-      "Care Instructions": "Machine wash cold, tumble dry low",
-      "Suitable For": "Small to medium dogs up to 40 lbs",
-      "Color Options": "Gray, Brown, Navy, Beige"
-    },
-    shipping: {
-      "Standard Shipping": "5-7 business days - FREE on orders over $50",
-      "Express Shipping": "2-3 business days - $9.99",
-      "Overnight Shipping": "Next business day - $19.99"
-    }
+  // Get product data based on ID
+  const product = getProductById(id)
+  
+  // If product not found, show error
+  if (!product) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Product Not Found</h1>
+          <p className="text-gray-600 mb-4">The product you're looking for doesn't exist.</p>
+          <Link to="/products">
+            <Button>Back to Products</Button>
+          </Link>
+        </div>
+      </div>
+    )
   }
 
   const reviews = [
@@ -86,29 +59,17 @@ const ProductDetailPage = () => {
     }
   ]
 
-  const relatedProducts = [
-    {
-      id: 2,
-      name: "Interactive Puzzle Toy",
-      price: 24.99,
-      image: interactivePuzzleToy,
-      rating: 4.6
-    },
-    {
-      id: 4,
-      name: "No-Pull Training Harness",
-      price: 29.99,
-      image: noPullTrainingHarness,
-      rating: 4.7
-    },
-    {
-      id: 3,
-      name: "Orthopedic Memory Foam Bed",
-      price: 79.99,
-      image: orthopedicMemoryFoamBed,
-      rating: 4.9
-    }
-  ]
+  // Get related products (exclude current product)
+  const relatedProducts = allProducts
+    .filter(p => p.id !== product.id)
+    .slice(0, 3)
+    .map(p => ({
+      id: p.id,
+      name: p.name,
+      price: p.price,
+      image: p.images[0],
+      rating: p.rating
+    }))
 
   const handleAddToCart = () => {
     for (let i = 0; i < quantity; i++) {

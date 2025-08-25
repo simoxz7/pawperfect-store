@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -7,14 +7,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Star, Heart, Filter } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
-import premiumDonutPetBed from "../assets/premium_donut_pet_bed.webp"
-import interactivePuzzleToy from "../assets/interactive_puzzle_toy.webp"
-import orthopedicMemoryFoamBed from "../assets/orthopedic_memory_foam_bed.webp"
-import noPullTrainingHarness from "../assets/no_pull_training_harness.webp"
-import automaticCatFeeder from "../assets/automatic_cat_feeder.webp"
-import catnipInfusedScratchingPost from "../assets/catnip_infused_scratching_post.webp"
-import birdCageDeluxe from "../assets/bird_cage_deluxe.webp"
-import aquariumLedLightSystem from "../assets/aquarium_led_light_system.webp"
+import { allProducts } from "../data/products"
 
 const ProductsPage = () => {
   const [searchParams] = useSearchParams()
@@ -25,113 +18,6 @@ const ProductsPage = () => {
   const [selectedCategories, setSelectedCategories] = useState([])
 
   // Sample product data - in a real app, this would come from an API
-  const allProducts = [
-    {
-      id: 1,
-      name: "Premium Donut Pet Bed",
-      price: 49.99,
-      originalPrice: 69.99,
-      image: premiumDonutPetBed,
-      rating: 4.8,
-      reviews: 124,
-      category: "beds",
-      petType: "dogs",
-      badge: "Best Seller",
-      description: "Ultra-soft donut bed perfect for small to medium dogs"
-    },
-    {
-      id: 2,
-      name: "Interactive Puzzle Toy",
-      price: 24.99,
-      originalPrice: 29.99,
-      image: interactivePuzzleToy,
-      rating: 4.6,
-      reviews: 89,
-      category: "toys",
-      petType: "dogs",
-      badge: "Sale",
-      description: "Mental stimulation toy that keeps dogs engaged"
-    },
-    {
-      id: 3,
-      name: "Orthopedic Memory Foam Bed",
-      price: 79.99,
-      originalPrice: 99.99,
-      image: orthopedicMemoryFoamBed,
-      rating: 4.9,
-      reviews: 156,
-      category: "beds",
-      petType: "dogs",
-      badge: "Premium",
-      description: "Therapeutic bed for senior dogs with joint issues"
-    },
-    {
-      id: 4,
-      name: "No-Pull Training Harness",
-      price: 29.99,
-      originalPrice: 34.99,
-      image: noPullTrainingHarness,
-      rating: 4.7,
-      reviews: 203,
-      category: "accessories",
-      petType: "dogs",
-      badge: "Popular",
-      description: "Comfortable harness that reduces pulling behavior"
-    },
-    {
-      id: 5,
-      name: "Automatic Cat Feeder",
-      price: 89.99,
-      originalPrice: 109.99,
-      image: automaticCatFeeder,
-      rating: 4.5,
-      reviews: 78,
-      category: "feeding",
-      petType: "cats",
-      badge: "Tech",
-      description: "Smart feeder with portion control and scheduling"
-    },
-    {
-      id: 6,
-      name: "Catnip Infused Scratching Post",
-      price: 19.99,
-      originalPrice: 24.99,
-      image: catnipInfusedScratchingPost,
-      rating: 4.4,
-      reviews: 92,
-      category: "toys",
-      petType: "cats",
-      badge: "Sale",
-      description: "Natural sisal scratching post with organic catnip"
-    },
-    {
-      id: 7,
-      name: "Bird Cage Deluxe",
-      price: 129.99,
-      originalPrice: 149.99,
-      image: birdCageDeluxe,
-      rating: 4.8,
-      reviews: 45,
-      category: "housing",
-      petType: "birds",
-      badge: "Premium",
-      description: "Spacious cage perfect for medium-sized birds"
-    },
-    {
-      id: 8,
-      name: "Aquarium LED Light System",
-      price: 59.99,
-      originalPrice: 79.99,
-      image: aquariumLedLightSystem,
-      rating: 4.6,
-      reviews: 67,
-      category: "accessories",
-      petType: "fish",
-      badge: "Sale",
-      description: "Full spectrum LED lighting for healthy aquatic plants"
-    }
-  ]
-
   const categories = [
     { id: "beds", name: "Beds & Furniture" },
     { id: "toys", name: "Toys & Entertainment" },
@@ -309,7 +195,7 @@ const ProductsPage = () => {
                   <div className="relative">
                     <Link to={`/products/${product.id}`}>
                       <img 
-                        src={product.image} 
+                        src={product.images[0]} 
                         alt={product.name}
                         className="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform"
                       />
