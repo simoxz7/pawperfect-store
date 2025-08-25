@@ -1,77 +1,28 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Star, Truck, Shield, Heart, ArrowRight } from 'lucide-react'
 import { useCart } from '../hooks/useCart'
-import premiumDonutPetBed from "../assets/premium_donut_pet_bed.webp"
-import interactivePuzzleToy from "../assets/interactive_puzzle_toy.webp"
-import orthopedicMemoryFoamBed from "../assets/orthopedic_memory_foam_bed.webp"
-import noPullTrainingHarness from "../assets/no_pull_training_harness.webp"
-import automaticCatFeeder from "../assets/automatic_cat_feeder.webp"
+import { allProducts } from "../data/products"
 import heroBanner1 from "../assets/hero_banner_1.png"
 
 const HomePage = () => {
   const { addItem } = useCart()
 
-  // Sample product data
-  const featuredProducts = [
-    {
-      id: 1,
-      name: "Premium Donut Pet Bed",
-      price: 49.99,
-      originalPrice: 69.99,
-      image: premiumDonutPetBed,
-      rating: 4.8,
-      reviews: 124,
-      category: "beds",
-      badge: "Best Seller"
-    },
-    {
-      id: 2,
-      name: "Interactive Puzzle Toy",
-      price: 24.99,
-      originalPrice: 29.99,
-      image: interactivePuzzleToy,
-      rating: 4.6,
-      reviews: 89,
-      category: "toys",
-      badge: "Sale"
-    },
-    {
-      id: 3,
-      name: "Orthopedic Memory Foam Bed",
-      price: 79.99,
-      originalPrice: 99.99,
-      image: orthopedicMemoryFoamBed,
-      rating: 4.9,
-      reviews: 156,
-      category: "beds",
-      badge: "Premium"
-    },
-    {
-      id: 4,
-      name: "No-Pull Training Harness",
-      price: 29.99,
-      originalPrice: 34.99,
-      image: noPullTrainingHarness,
-      rating: 4.7,
-      reviews: 203,
-      category: "accessories",
-      badge: "Popular"
-    },
-    {
-      id: 5,
-      name: "Automatic Cat Feeder",
-      price: 89.99,
-      originalPrice: 109.99,
-      image: automaticCatFeeder,
-      rating: 4.5,
-      reviews: 78,
-      category: "feeding",
-      badge: "Tech"
-    }
-  ]
+  // Get featured products from shared data
+  const featuredProducts = allProducts.slice(0, 5).map(product => ({
+    id: product.id,
+    name: product.name,
+    price: product.price,
+    originalPrice: product.originalPrice,
+    image: product.images[0],
+    rating: product.rating,
+    reviews: product.reviews,
+    category: product.category,
+    badge: product.badge
+  }))
 
   const categories = [
     { name: "Dogs", icon: "🐕", link: "/products?category=dogs", count: "500+ items" },
